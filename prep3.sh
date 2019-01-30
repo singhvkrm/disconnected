@@ -1,32 +1,7 @@
-docker pull registry.redhat.io/jboss-amq-6/amq63-openshift:v3.11.16
-docker pull registry.redhat.io/jboss-datagrid-7/datagrid71-openshift:v3.11.16
-docker pull registry.redhat.io/jboss-datagrid-7/datagrid71-client-openshift:v3.11.16
-docker pull registry.redhat.io/jboss-datavirt-6/datavirt63-openshift:v3.11.16
-docker pull registry.redhat.io/jboss-datavirt-6/datavirt63-driver-openshift:v3.11.16
-docker pull registry.redhat.io/jboss-decisionserver-6/decisionserver64-openshift:v3.11.16
-docker pull registry.redhat.io/jboss-processserver-6/processserver64-openshift:v3.11.16
-docker pull registry.redhat.io/jboss-eap-6/eap64-openshift:v3.11.16
-docker pull registry.redhat.io/jboss-eap-7/eap71-openshift:v3.11.16
-docker pull registry.redhat.io/jboss-webserver-3/webserver31-tomcat7-openshift:v3.11.16
-docker pull registry.redhat.io/jboss-webserver-3/webserver31-tomcat8-openshift:v3.11.16
-docker pull registry.redhat.io/openshift3/jenkins-2-rhel7:v3.11.16
-docker pull registry.redhat.io/openshift3/jenkins-agent-maven-35-rhel7:v3.11.16
-docker pull registry.redhat.io/openshift3/jenkins-agent-nodejs-8-rhel7:v3.11.16
-docker pull registry.redhat.io/openshift3/jenkins-slave-base-rhel7:v3.11.16
-docker pull registry.redhat.io/openshift3/jenkins-slave-maven-rhel7:v3.11.16
-docker pull registry.redhat.io/openshift3/jenkins-slave-nodejs-rhel7:v3.11.16
-docker pull registry.redhat.io/rhscl/mongodb-32-rhel7:v3.11.16
-docker pull registry.redhat.io/rhscl/mysql-57-rhel7:v3.11.16
-docker pull registry.redhat.io/rhscl/perl-524-rhel7:v3.11.16
-docker pull registry.redhat.io/rhscl/php-56-rhel7:v3.11.16
-docker pull registry.redhat.io/rhscl/postgresql-95-rhel7:v3.11.16
-docker pull registry.redhat.io/rhscl/python-35-rhel7:v3.11.16
-docker pull registry.redhat.io/redhat-sso-7/sso70-openshift:v3.11.16
-docker pull registry.redhat.io/rhscl/ruby-24-rhel7:v3.11.16
-docker pull registry.redhat.io/redhat-openjdk-18/openjdk18-openshift:v3.11.16
-docker pull registry.redhat.io/redhat-sso-7/sso71-openshift:v3.11.16
-docker pull registry.redhat.io/rhscl/nodejs-6-rhel7:v3.11.16
-docker pull registry.redhat.io/rhscl/mariadb-101-rhel7:v3.11.16
+for image in {jboss-amq-6/amq63-openshift,jboss-datagrid-7/datagrid71-openshift,jboss-datagrid-7/datagrid71-client-openshift,jboss-datavirt-6/datavirt63-openshift,jboss-datavirt-6/datavirt63-driver-openshift,jboss-decisionserver-6/decisionserver64-openshift,jboss-processserver-6/processserver64-openshift,jboss-eap-6/eap64-openshift,jboss-eap-7/eap70-openshift,jboss-webserver-3/webserver31-tomcat7-openshift,jboss-webserver-3/webserver31-tomcat8-openshift,openshift3/jenkins-1-rhel7,openshift3/jenkins-2-rhel7,openshift3/jenkins-agent-maven-35-rhel7,openshift3/jenkins-agent-nodejs-8-rhel7,openshift3/jenkins-slave-base-rhel7,openshift3/jenkins-slave-maven-rhel7,openshift3/jenkins-slave-nodejs-rhel7,rhscl/mongodb-32-rhel7,rhscl/mysql-57-rhel7,rhscl/perl-524-rhel7,rhscl/php-56-rhel7,rhscl/postgresql-95-rhel7,rhscl/python-35-rhel7,redhat-sso-7/sso70-openshift,rhscl/ruby-24-rhel7,redhat-openjdk-18/openjdk18-openshift,redhat-sso-7/sso71-openshift,rhscl/nodejs-6-rhel7,rhscl/mariadb-101-rhel7}; do \
+     docker pull registry.access.redhat.com/$image
+   done
+ 
 echo "go to images directory" 
 cd /root/images
 docker save -o ose3-images.tar \
