@@ -150,5 +150,3 @@ echo "=======Creating directory done======"
     docker load -i ose3-optional-images.tar
     echo "====Load the images that you copied:==done"
     echo "=============================================="
-    
-    
