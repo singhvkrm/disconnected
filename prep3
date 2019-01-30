@@ -1,5 +1,5 @@
  echo "=======starting downloading======" 
-  docker pull registry.redhat.io/jboss-amq-6/amq63-openshift:v3.11.16
+ docker pull registry.redhat.io/jboss-amq-6/amq63-openshift:v3.11.16
  docker pull registry.redhat.io/jboss-datagrid-7/datagrid71-openshift:v3.11.16
  docker pull registry.redhat.io/jboss-datagrid-7/datagrid71-client-openshift:v3.11.16
  docker pull registry.redhat.io/jboss-datavirt-6/datavirt63-openshift:v3.11.16
