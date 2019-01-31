@@ -1,7 +1,3 @@
-for image in {jboss-amq-6/amq63-openshift,jboss-datagrid-7/datagrid71-openshift,jboss-datagrid-7/datagrid71-client-openshift,jboss-datavirt-6/datavirt63-openshift,jboss-datavirt-6/datavirt63-driver-openshift,jboss-decisionserver-6/decisionserver64-openshift,jboss-processserver-6/processserver64-openshift,jboss-eap-6/eap64-openshift,jboss-eap-7/eap70-openshift,jboss-webserver-3/webserver31-tomcat7-openshift,jboss-webserver-3/webserver31-tomcat8-openshift,openshift3/jenkins-1-rhel7,openshift3/jenkins-2-rhel7,openshift3/jenkins-agent-maven-35-rhel7,openshift3/jenkins-agent-nodejs-8-rhel7,openshift3/jenkins-slave-base-rhel7,openshift3/jenkins-slave-maven-rhel7,openshift3/jenkins-slave-nodejs-rhel7,rhscl/mongodb-32-rhel7,rhscl/mysql-57-rhel7,rhscl/perl-524-rhel7,rhscl/php-56-rhel7,rhscl/postgresql-95-rhel7,rhscl/python-35-rhel7,redhat-sso-7/sso70-openshift,rhscl/ruby-24-rhel7,redhat-openjdk-18/openjdk18-openshift,redhat-sso-7/sso71-openshift,rhscl/nodejs-6-rhel7,rhscl/mariadb-101-rhel7}; do \
-     docker pull registry.access.redhat.com/$image
-   done
- 
 echo "go to images directory" 
 cd /root/images
 docker save -o ose3-images.tar \
@@ -61,7 +57,7 @@ docker save -o ose3-images.tar \
     registry.redhat.io/openshift3/snapshot-controller \
     registry.redhat.io/openshift3/snapshot-provisioner \
     registry.redhat.io/rhel7/etcd:3.2.22
-
+echo "ose3-images.tar done" 
 docker save -o ose3-optional-imags.tar \
     registry.redhat.io/openshift3/metrics-cassandra \
     registry.redhat.io/openshift3/metrics-hawkular-metrics \
@@ -89,7 +85,7 @@ docker save -o ose3-optional-imags.tar \
     registry.redhat.io/rhgs3/rhgs-volmanager-rhel7 \
     registry.redhat.io/rhgs3/rhgs-gluster-block-prov-rhel7 \
     registry.redhat.io/rhgs3/rhgs-s3-server-rhel7
-        
+echo "ose3-optional-imags done" 
 docker save -o ose3-builder-images.tar \
     registry.redhat.io/jboss-webserver-3/webserver31-tomcat7-openshift:v3.11.16 \
     registry.redhat.io/jboss-webserver-3/webserver31-tomcat8-openshift:v3.11.16 \
@@ -99,7 +95,7 @@ docker save -o ose3-builder-images.tar \
     registry.redhat.io/openshift3/jenkins-slave-base-rhel7:v3.11.16 \
     registry.redhat.io/openshift3/jenkins-slave-maven-rhel7:v3.11.16 \
     registry.redhat.io/openshift3/jenkins-slave-nodejs-rhel7:v3.11.16
-
+echo "ose3-builder-images.tar done" 
 docker load -i ose3-images.tar
 docker load -i ose3-builder-images.tar
 docker load -i ose3-optional-images.tar
