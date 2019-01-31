@@ -8,10 +8,15 @@ glusterfs
 master.example.com openshift_public_hostname=master.example.com
 
 [masters]
-master.example.com openshift_public_hostname=master.example.com
+master01.example.com openshift_public_hostname=master.example.com
+master02.example.com openshift_public_hostname=master.example.com
+master03.example.com openshift_public_hostname=master.example.com
 
+# please update the ip address for master and node host. Node means where infra, storage and app is installed for now.
 [nodes]
-master.example.com openshift_public_hostname=master.example.com openshift_node_group_name='node-config-master'
+master01.example.com openshift_public_hostname=master.example.com openshift_node_group_name='node-config-master'
+master02.example.com openshift_public_hostname=master.example.com openshift_node_group_name='node-config-master'
+master03.example.com openshift_public_hostname=master.example.com openshift_node_group_name='node-config-master'
 node01.localhost.com openshift_public_hostname=node01.localhost.com openshift_node_group_name='node-config-infra'
 node02.localhost.com openshift_public_hostname=node02.localhost.com openshift_node_group_name='node-config-infra'
 node03.localhost.com openshift_public_hostname=node03.localhost.com openshift_node_group_name='node-config-infra'
@@ -22,12 +27,14 @@ node02.localhost.com glusterfs_zone=2 glusterfs_devices='["/dev/disk1", "/dev/di
 node03.localhost.com glusterfs_zone=3 glusterfs_devices='["/dev/disk1", "/dev/disk2", "/dev/disk3", "/dev/disk4", "/dev/disk5", "/dev/disk7", "/dev/disk8", "/dev/disk9"]'
 
 [OSEv3:vars]
-ansible_ssh_user=root
+# non root sudo user only. Please setup password less ssh between the hosts.
+ansible_ssh_user=admin
 ansible_become=false
 debug_level=2
 openshift_release=v3.11
 openshift_deployment_type=openshift-enterprise
 
+# Please enter your docker registry url
 oreg_url=registry.yourlocalregistry.com/ose-${component}:${version}
 oreg_auth_user=testuser
 oreg_auth_password=testpassword
@@ -68,6 +75,7 @@ openshift_cluster_monitoring_operator_prometheus_storage_class_name='glusterfs-s
 openshift_cluster_monitoring_operator_alertmanager_storage_class_name='glusterfs-storage-block'
 
 # Container image to use for glusterfs pods
+## change it to local container image url
 openshift_storage_glusterfs_image="registry.redhat.io/rhgs3/rhgs-server-rhel7:v3.11"
 
 # Container image to use for glusterblock-provisioner pod
@@ -86,7 +94,7 @@ openshift_storage_glusterfs_block_host_vol_size=1716
 openshift_storage_glusterfs_block_storageclass=true
 openshift_storage_glusterfs_block_storageclass_default=false
 
-
+## Please configure LDAP/AD setup 
 openshift_master_identity_providers=[{'name': 'htpasswd_auth', 'login': 'true', 'challenge': 'true', 'kind': 'HTPasswdPasswordIdentityProvider'}]
 openshift_master_htpasswd_users={'admin': 'hashpassword', 'developer': 'hashedpassword'}
 openshift_master_default_subdomain=apps.test.example.com
