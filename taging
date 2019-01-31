@@ -1,0 +1,46 @@
+ Start the registry service.
+
+   ```
+   # systemctl restart docker
+   # docker run -dit --restart=always --name docker-registry -p 5000:5000 registry
+   # docker ps
+   ```
+
+   - Push the tagged Docker Image to the front.
+
+   
+   for image in {apb-base:v3.11.16,apb-tools:v3.11.16,automation-broker-apb:v3.11.16,csi-attacher:v3.11.16,csi-driver-registrar:v3.11.16,csi-livenessprobe:v3.11.16,csi-provisioner:v3.11.16,grafana:v3.11.16,image-inspector:v3.11.16,mariadb-apb:v3.11.16,mediawiki:v3.11.16,mediawiki-apb:v3.11.16,mysql-apb:v3.11.16,ose-ansible:v3.11.16,ose-ansible-service-broker:v3.11.16,ose-cli:v3.11.16,ose-cluster-autoscaler:v3.11.16,ose-cluster-capacity:v3.11.16,ose-cluster-monitoring-operator:v3.11.16,ose-console:v3.11.16,ose-configmap-reloader:v3.11.16,ose-control-plane:v3.11.16,ose-deployer:v3.11.16,ose-descheduler:v3.11.16,ose-docker-builder:v3.11.16,ose-docker-registry:v3.11.16,ose-efs-provisioner:v3.11.16,ose-egress-dns-proxy:v3.11.16,ose-egress-http-proxy:v3.11.16,ose-egress-router:v3.11.16,ose-haproxy-router:v3.11.16,ose-hyperkube:v3.11.16,ose-hypershift:v3.11.16,ose-keepalived-ipfailover:v3.11.16,ose-kube-rbac-proxy:v3.11.16,ose-kube-state-metrics:v3.11.16,ose-metrics-server:v3.11.16,ose-node:v3.11.16,ose-node-problem-detector:v3.11.16,ose-operator-lifecycle-manager:v3.11.16,ose-pod:v3.11.16,ose-prometheus-config-reloader:v3.11.16,ose-prometheus-operator:v3.11.16,ose-recycler:v3.11.16,ose-service-catalog:v3.11.16,ose-template-service-broker:v3.11.16,ose-web-console:v3.11.16,postgresql-apb:v3.11.16,registry-console:v3.11.16,snapshot-controller:v3.11.16,snapshot-provisioner:v3.11.16}; do \
+     docker push registry.vik.com:5000/openshift3/$image
+   done
+
+   docker push registry.vik.com:5000/rhel7/etcd:3.2.22
+
+
+   for image in {metrics-cassandra:v3.11.16,metrics-hawkular-metrics:v3.11.16,metrics-hawkular-openshift-agent:v3.11.16,metrics-heapster:v3.11.16,oauth-proxy:v3.11.16,ose-logging-curator5:v3.11.16,ose-logging-elasticsearch5:v3.11.16,ose-logging-eventrouter:v3.11.16,ose-logging-fluentd:v3.11.16,ose-logging-kibana5:v3.11.16,ose-metrics-schema-installer:v3.11.16,prometheus:v3.11.16,prometheus-alert-buffer:v3.11.16,prometheus-alertmanager:v3.11.16,prometheus-node-exporter:v3.11.16}; do \
+   docker push registry.vik.com:5000/openshift3/$image
+   done
+
+
+   for image in {cfme-openshift-postgresql,cfme-openshift-memcached,cfme-openshift-app-ui,cfme-openshift-app,cfme-openshift-embedded-ansible,cfme-openshift-httpd,cfme-httpd-configmap-generator}; do \
+   docker push registry.vik.com:5000/cloudforms46/$image
+   done
+
+
+   for image in {rhgs-server-rhel7,rhgs-volmanager-rhel7,rhgs-gluster-block-prov-rhel7,rhgs-s3-server-rhel7}; do \
+   docker push registry.vik.com:5000/rhgs3/$image
+   done  
+
+   for image in {jboss-amq-6/amq63-openshift,jboss-datagrid-7/datagrid71-openshift,jboss-datagrid-7/datagrid71-client-openshift,jboss-datavirt-6/datavirt63-openshift,jboss-datavirt-6/datavirt63-driver-openshift,jboss-decisionserver-6/decisionserver64-openshift,jboss-processserver-6/processserver64-openshift,jboss-eap-6/eap64-openshift,jboss-eap-7/eap70-openshift,jboss-webserver-3/webserver31-tomcat7-openshift,jboss-webserver-3/webserver31-tomcat8-openshift,openshift3/jenkins-1-rhel7,openshift3/jenkins-2-rhel7,openshift3/jenkins-agent-maven-35-rhel7,openshift3/jenkins-agent-nodejs-8-rhel7,openshift3/jenkins-slave-base-rhel7,openshift3/jenkins-slave-maven-rhel7,openshift3/jenkins-slave-nodejs-rhel7,rhscl/mongodb-32-rhel7,rhscl/mysql-57-rhel7,rhscl/perl-524-rhel7,rhscl/php-56-rhel7,rhscl/postgresql-95-rhel7,rhscl/python-35-rhel7,redhat-sso-7/sso70-openshift,rhscl/ruby-24-rhel7,redhat-openjdk-18/openjdk18-openshift,redhat-sso-7/sso71-openshift,rhscl/nodejs-6-rhel7,rhscl/mariadb-101-rhel7}; do \
+     docker push registry.vik.com:5000/$image
+   done
+
+
+
+   -------Pushing a major version-------
+   $ for image in {apb-base,apb-tools,automation-broker-apb,csi-attacher,csi-driver-registrar,csi-livenessprobe,csi-provisioner,grafana,image-inspector,mariadb-apb,mediawiki,mediawiki-apb,mysql-apb,ose-ansible,ose-ansible-service-broker,ose-cli,ose-cluster-autoscaler,ose-cluster-capacity,ose-cluster-monitoring-operator,ose-console,ose-configmap-reloader,ose-control-plane,ose-deployer,ose-descheduler,ose-docker-builder,ose-docker-registry,ose-efs-provisioner,ose-egress-dns-proxy,ose-egress-http-proxy,ose-egress-router,ose-haproxy-router,ose-hyperkube,ose-hypershift,ose-keepalived-ipfailover,ose-kube-rbac-proxy,ose-kube-state-metrics,ose-metrics-server,ose-node,ose-node-problem-detector,ose-operator-lifecycle-manager,ose-pod,ose-prometheus-config-reloader,ose-prometheus-operator,ose-recycler,ose-service-catalog,ose-template-service-broker,ose-web-console,postgresql-apb,registry-console,snapshot-controller,snapshot-provisioner}; do \
+   docker push registry.vik.com:5000/openshift3/$image:v3.11
+   done
+
+   for image in {metrics-cassandra,metrics-hawkular-metrics,metrics-hawkular-openshift-agent,metrics-heapster,oauth-proxy,ose-logging-curator5,ose-logging-elasticsearch5,ose-logging-eventrouter,ose-logging-fluentd,ose-logging-kibana5,ose-metrics-schema-installer,prometheus,prometheus-alert-buffer,prometheus-alertmanager,prometheus-node-exporter}; do \
+   docker push registry.vik.com:5000/openshift3/$image:v3.11
+   done
